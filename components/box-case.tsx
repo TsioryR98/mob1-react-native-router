@@ -1,6 +1,6 @@
-import { Pressable } from "react-native";
 import { FC } from "react";
-import { styles } from "styles/styles_global";
+import { Pressable } from "react-native";
+import { styles } from "../styles/styles_global";
 
 type BoxProps = {
   rowBox: number;
