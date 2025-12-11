@@ -1,17 +1,39 @@
+import { Box } from "@/components/box-case";
+import boardCreationWithMine from "@/utilities/board-creation";
+import revealEmptyZone from "@/utilities/revealEmptyZone";
 import { useState } from "react";
 import { Text, View } from "react-native";
-import { Box } from "../components/box-case";
 import { styles } from "../styles/styles_global";
-import boardCreation from "../utilities/board-creation";
-
+const boardSize = 20;
+const bombCount = 40;
 export default function main() {
-  const tab = boardCreation(20);
+  const tab = boardCreationWithMine(boardSize, bombCount);
   const [boxState, setBoxState] = useState(tab);
+  const [isGameOver, setIsGameOver] = useState(false);
 
-  const handlePress = (rowBox: number, columnBox: number, value: number) => {
+  const handlePress = (rowBox: number, columnBox: number) => {
     const newTab = boxState.map((row) => [...row]);
-    newTab[rowBox][columnBox] = value === 1 ? 0 : 1;
-    setBoxState(newTab);
+    const currentValue = newTab[rowBox][columnBox];
+    if (currentValue.isBomb) {
+      setIsGameOver(true);
+      return;
+    }
+
+    if (!currentValue.isOpen && currentValue.value === 0) {
+      const newBoard = revealEmptyZone(newTab, rowBox, columnBox);
+      setBoxState(newBoard);
+      return;
+    }
+
+    if (!currentValue.isOpen) {
+      newTab[rowBox][columnBox] = { ...currentValue, isOpen: true };
+      setBoxState(newTab);
+    }
+  };
+
+  const retry = () => {
+    setBoxState(boardCreationWithMine(boardSize, bombCount));
+    setIsGameOver(false);
   };
 
   return (
@@ -29,6 +51,7 @@ export default function main() {
                 columnBox={columnBox}
                 value={value}
                 handlePress={handlePress}
+                isGameOver={isGameOver}
               />
             ))}
           </View>

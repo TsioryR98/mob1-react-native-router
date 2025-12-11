@@ -4,9 +4,9 @@ import bombImage from "../assets/images/bomb.png";
 import { styles } from "../styles/styles_global";
 
 type BoxProps = {
+  value: { isBomb: boolean; isOpen: boolean; value: number };
   rowBox: number;
   columnBox: number;
-  value: { isBomb: boolean; isOpen: boolean; value: number };
   handlePress: (rowBox: number, columnBox: number) => void;
   isGameOver: boolean;
 };
