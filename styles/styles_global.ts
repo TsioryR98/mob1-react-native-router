@@ -47,4 +47,9 @@ export const styles = StyleSheet.create({
     marginTop: 20,
   },
   /* put in array with dynamic styles  */
+  gameOverText: {
+    backgroundColor: "red",
+    padding: 10,
+    fontSize: 20,
+  },
 });

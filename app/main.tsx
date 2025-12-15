@@ -2,7 +2,7 @@ import { Box } from "@/components/box-case";
 import boardCreationWithMine from "@/utilities/board-creation";
 import revealEmptyZone from "@/utilities/revealEmptyZone";
 import { useState } from "react";
-import { Text, View } from "react-native";
+import { Pressable, Text, View } from "react-native";
 import { styles } from "../styles/styles_global";
 const boardSize = 20;
 const bombCount = 40;
@@ -56,9 +56,16 @@ export default function main() {
             ))}
           </View>
         ))}
-      </View>
-      <View style={styles.reset}>
-        <Text style={styles.resetBtn}>Reset</Text>
+        {isGameOver && (
+          <View style={styles.reset}>
+            <Text style={styles.gameOverText}>Game Over</Text>
+          </View>
+        )}
+        {isGameOver && (
+          <Pressable style={styles.reset} onPress={retry}>
+            <Text style={styles.resetBtn}>Reset</Text>
+          </Pressable>
+        )}
       </View>
     </View>
   );
