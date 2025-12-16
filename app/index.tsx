@@ -1,0 +1,29 @@
+import GameButton from "@/components/GameMenuButton";
+import { styles } from "@/styles/game_menu";
+import { useRouter } from "expo-router";
+import { Image, View } from "react-native";
+
+export default function Home() {
+  const router = useRouter();
+
+  return (
+    <View style={styles.container}>
+      <View>
+        <Image
+          style={styles.logo}
+          source={require("../assets/images/logo.png")}
+        />
+      </View>
+      <View>
+        <GameButton title="New Game" onPress={() => router.push("/gamePlay")} />
+        <GameButton
+          title="Continue Game"
+          onPress={() => router.push("/gamePlay")}
+        />
+        <GameButton title="Options" onPress={() => router.push("/gamePlay")} />
+        {/** new route */}
+        <GameButton title="Help" onPress={() => router.push("/gamePlay")} />
+      </View>
+    </View>
+  );
+}

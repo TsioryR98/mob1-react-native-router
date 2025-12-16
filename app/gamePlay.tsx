@@ -1,4 +1,4 @@
-import { Box } from "@/components/box-case";
+import { Box } from "@/components/BoxCase";
 import boardCreationWithMine from "@/utilities/board-creation";
 import revealEmptyZone from "@/utilities/revealEmptyZone";
 import { useState } from "react";
@@ -6,7 +6,7 @@ import { Pressable, Text, View } from "react-native";
 import { styles } from "../styles/styles_global";
 const boardSize = 20;
 const bombCount = 40;
-export default function main() {
+export default function gamePlay() {
   const tab = boardCreationWithMine(boardSize, bombCount);
   const [boxState, setBoxState] = useState(tab);
   const [isGameOver, setIsGameOver] = useState(false);
