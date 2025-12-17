@@ -2,10 +2,11 @@ import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
   button: {
-    paddingVertical: 14,
-    paddingHorizontal: 30,
+    paddingVertical: 18,
+    paddingHorizontal: 40,
     borderRadius: 12,
     marginVertical: 8,
+    width: 300,
     alignItems: "center",
     justifyContent: "center",
     elevation: 3, // shadows Android

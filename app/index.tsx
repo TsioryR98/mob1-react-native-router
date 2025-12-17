@@ -14,7 +14,7 @@ export default function Home() {
           source={require("../assets/images/logo.png")}
         />
       </View>
-      <View>
+      <View style={styles.gameMenu}>
         <GameButton title="New Game" onPress={() => router.push("/gamePlay")} />
         <GameButton
           title="Continue Game"

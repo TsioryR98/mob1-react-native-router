@@ -3,18 +3,24 @@ import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
   container: {
     display: "flex",
-    backgroundColor: "grey",
     width: "100%",
     height: "100%",
     justifyContent: "center",
     alignItems: "center",
   },
   logo: {
-    width: 80,
-    height: 80,
+    width: 100,
+    height: 100,
     resizeMode: "contain",
+    margin: 50,
   },
-  game_menu: {},
+  gameMenu: {
+    backgroundColor: " red",
+
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+  },
   resetBtn: {
     backgroundColor: "darkgreen",
     padding: 10,
