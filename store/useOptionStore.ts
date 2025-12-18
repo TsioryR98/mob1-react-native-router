@@ -26,6 +26,7 @@ type OptionStore = OptionState & OptionActions;
 
 export const useOptionStore = create<OptionStore>((set) => ({
   ...defaultOptions,
+
   setLevel: (newLevel) => set((state) => ({ ...state, level: newLevel })),
   setVolume: (newVolume) => set((state) => ({ ...state, volume: newVolume })),
   setVibrationOnLose: (vibrationOnLose) =>
