@@ -10,7 +10,7 @@ import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
 import "react-native-reanimated";
 
-import { useColorScheme } from "@/components/useColorScheme";
+import { useColorScheme } from "@/components/hooks/useColorScheme";
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -57,7 +57,7 @@ function RootLayoutNav() {
       <Stack>
         <Stack.Screen
           name="index"
-          options={{ headerShown: false, title: "Game Menu" }}
+          options={{ headerShown: false, title: "Demineur" }}
         />
       </Stack>
     </ThemeProvider>
