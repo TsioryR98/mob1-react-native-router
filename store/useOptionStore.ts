@@ -1,6 +1,6 @@
 import { create } from "zustand";
-interface Level {
-  cellWindth: number;
+export interface Level {
+  cellWidth: number;
   bombs: number;
   name: "easy" | "medium" | "hard";
 } //no imbrication for simplicity and no need to access ...state.
@@ -18,7 +18,7 @@ interface OptionActions extends OptionState {
 
 const defaultOptions: OptionState = {
   volume: 0,
-  level: { cellWindth: 10, bombs: 20, name: "easy" },
+  level: { cellWidth: 10, bombs: 20, name: "easy" },
   vibrationOnLose: true,
 } as const;
 
