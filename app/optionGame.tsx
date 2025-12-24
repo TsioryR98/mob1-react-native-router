@@ -1,7 +1,7 @@
 import { Level, useOptionStore } from "@/store/useOptionStore";
 import { useRouter } from "expo-router";
 import { useEffect, useState } from "react";
-import { Dimensions } from "react-native";
+import { Button, Dimensions, ScrollView, Text, View } from "react-native";
 import { useShallow } from "zustand/react/shallow";
 
 const levels: Level[] = [
@@ -17,7 +17,7 @@ const { width } = Dimensions.get("screen");
 const getVolume = (value: number) =>
   value > 100 ? 100 : value < 0 ? 0 : value;
 
-const optionGame = () => {
+const OptionGame = () => {
   const router = useRouter();
   const { level, vibrationOnLose, volume } = useOptionStore(
     useShallow((state) => ({
@@ -49,4 +49,34 @@ const optionGame = () => {
   const handleChangeVolumeState = (increase: boolean) => () => {
     setVolumeState(getVolume(increase ? volumeState + 10 : volumeState - 10));
   };
+  return (
+    <ScrollView>
+      <View>
+        <View>
+          <Text>Musics</Text>
+        </View>
+      </View>
+      <View>
+        <View>
+          <Text>Vibrations</Text>
+        </View>
+      </View>
+      <View>
+        <View>
+          <Text>Levels</Text>
+        </View>
+      </View>
+      <View>
+        <View>
+          <Button
+            title="Save"
+            color="#7ddf5fff"
+            accessibilityLabel="save changes"
+          />{" "}
+        </View>
+      </View>
+    </ScrollView>
+  );
 };
+
+export default OptionGame;
