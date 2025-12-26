@@ -56,9 +56,8 @@ export default function gamePlay() {
             ))}
           </View>
         ))}
-      </View>{" "}
+      </View>
       <View>
-        {" "}
         {isGameOver && (
           <View style={styles.reset}>
             <Text style={styles.gameOverText}>Game Over</Text>

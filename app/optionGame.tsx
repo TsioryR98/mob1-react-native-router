@@ -1,9 +1,21 @@
+import "../global.css";
+
 import { Level, useOptionStore } from "@/store/useOptionStore";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import Slider from "@react-native-community/slider";
 import { useRouter } from "expo-router";
 import { useEffect, useState } from "react";
-import { Button, Dimensions, ScrollView, Text, View } from "react-native";
+import {
+  Button,
+  Dimensions,
+  Pressable,
+  ScrollView,
+  Switch,
+  Text,
+  View,
+} from "react-native";
+import Dropdown from "react-native-input-select";
+
 import { useShallow } from "zustand/react/shallow";
 
 const levels: Level[] = [
@@ -53,19 +65,16 @@ const OptionGame = () => {
   };
   return (
     <ScrollView>
-      <View>
+      <View className="p-10">
         <View>
           <Text>Musics</Text>
         </View>
-        <View className="d-flex flew-row justify-between items-center my-5">
-          <AntDesign
-            name="plus"
-            size={24}
-            color="black"
-            onPress={handleChangeVolumeState(true)}
-          />
+        <View className="flex flex-row justify-around items-center my-4">
+          <Pressable onPress={handleChangeVolumeState(true)}>
+            <AntDesign name="plus" size={24} color="black" />
+          </Pressable>
           <Slider
-            style={{ width: width / 2, height: 40 }}
+            style={{ width: width * 0.6, height: 40 }}
             minimumTrackTintColor="#000000"
             maximumTrackTintColor="#000000"
             minimumValue={0}
@@ -74,38 +83,67 @@ const OptionGame = () => {
             value={volumeState}
             onValueChange={(value) => setVolumeState(closestDiv10(value))}
           />
-          <AntDesign
-            name="minus"
-            size={24}
-            color="black"
-            onPress={handleChangeVolumeState(false)}
-          />
-          <AntDesign
-            name="muted"
-            size={24}
-            color="                               "
-            onPress={() => setVolumeState(0)}
-          />
-          <Text>{volumeState}</Text>
+          <Pressable onPress={handleChangeVolumeState(false)}>
+            <AntDesign name="minus" size={24} color="black" />
+          </Pressable>
+          <Pressable onPress={() => setVolumeState(0)}>
+            <AntDesign
+              name="muted"
+              size={24}
+              color="                               "
+            />
+          </Pressable>
         </View>
-      </View>
-      <View>
         <View>
-          <Text>Vibrations</Text>
+          <Text>{vibrationOnLoseState ? "activate" : "desactivate"}</Text>
+          <Switch
+            value={vibrationOnLoseState}
+            onValueChange={(v) => setVibrationOnLose(v)}
+          />
         </View>
-      </View>
-      <View>
         <View>
-          <Text>Levels</Text>
+          <View>
+            <Text>Levels</Text>
+          </View>
+          <View className="flex flex-row justify-center items-center my-5">
+            <Dropdown
+              label=""
+              placeholder="Choose level"
+              isMultiple={false}
+              options={[
+                { label: "easy", value: 0 },
+                { label: "medium", value: 1 },
+                { label: "hard", value: 2 },
+              ]}
+              selectedValue={levelState}
+              onValueChange={(selected: any) => setLevelState(selected)}
+              minSelectableItems={1}
+              maxSelectableItems={1}
+              primaryColor={"green"}
+              dropdownContainerStyle={{
+                borderColor: "blue",
+                borderWidth: 2,
+                borderRadius: 5,
+                marginTop: 5,
+                position: "relative",
+                display: "flex",
+                height: 50,
+                alignItems: "flex-start",
+                paddingInline: 10,
+              }}
+              dropdownIconStyle={{
+                top: 22,
+                right: 22,
+              }}
+            />
+          </View>
         </View>
-      </View>
-      <View>
         <View>
           <Button
             title="Save"
             color="#7ddf5fff"
             accessibilityLabel="save changes"
-          />{" "}
+          />
         </View>
       </View>
     </ScrollView>

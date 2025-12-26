@@ -31,7 +31,7 @@ export const styles = StyleSheet.create({
     borderWidth: 1,
   },
   resetBtn: {
-    backgroundColor: "darkgreen",
+    backgroundColor: "#7ddf5fff",
     padding: 10,
     fontSize: 20,
     color: "white",
