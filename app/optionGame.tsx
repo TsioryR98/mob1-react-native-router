@@ -1,4 +1,6 @@
 import { Level, useOptionStore } from "@/store/useOptionStore";
+import AntDesign from "@expo/vector-icons/AntDesign";
+import Slider from "@react-native-community/slider";
 import { useRouter } from "expo-router";
 import { useEffect, useState } from "react";
 import { Button, Dimensions, ScrollView, Text, View } from "react-native";
@@ -54,6 +56,37 @@ const OptionGame = () => {
       <View>
         <View>
           <Text>Musics</Text>
+        </View>
+        <View className="d-flex flew-row justify-between items-center my-5">
+          <AntDesign
+            name="plus"
+            size={24}
+            color="black"
+            onPress={handleChangeVolumeState(true)}
+          />
+          <Slider
+            style={{ width: width / 2, height: 40 }}
+            minimumTrackTintColor="#000000"
+            maximumTrackTintColor="#000000"
+            minimumValue={0}
+            maximumValue={100}
+            step={1}
+            value={volumeState}
+            onValueChange={(value) => setVolumeState(closestDiv10(value))}
+          />
+          <AntDesign
+            name="minus"
+            size={24}
+            color="black"
+            onPress={handleChangeVolumeState(false)}
+          />
+          <AntDesign
+            name="muted"
+            size={24}
+            color="                               "
+            onPress={() => setVolumeState(0)}
+          />
+          <Text>{volumeState}</Text>
         </View>
       </View>
       <View>

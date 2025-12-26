@@ -56,11 +56,16 @@ export default function gamePlay() {
             ))}
           </View>
         ))}
+      </View>{" "}
+      <View>
+        {" "}
         {isGameOver && (
           <View style={styles.reset}>
             <Text style={styles.gameOverText}>Game Over</Text>
           </View>
         )}
+      </View>
+      <View>
         {isGameOver && (
           <Pressable style={styles.reset} onPress={retry}>
             <Text style={styles.resetBtn}>Reset</Text>
